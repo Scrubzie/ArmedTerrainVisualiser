@@ -21,14 +21,17 @@ namespace ArmedTerrainVisualiser.Server.Controllers
         [HttpGet(Name = "WeatherForecast")]
         public IActionResult Get()
         {
-            //return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            //{
-            //    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            //    TemperatureC = Random.Shared.Next(-20, 55),
-            //    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            //})
-            //.ToArray();
-            return Ok(new { value = 2 });
+            return Ok(new
+            {
+                value = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+                {
+                    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                    TemperatureC = Random.Shared.Next(-20, 55),
+                    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                })
+            .ToArray()
+            });
+            //return Ok(new { value = 2 });
         }
     }
 }

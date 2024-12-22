@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
+    const [forecasts, setForecasts] = useState([]);
 
     useEffect(() => {
         populateWeatherData();
@@ -44,17 +44,8 @@ function App() {
         const data = await response.json();
         console.log("Testhing");
         console.log(data.value);
-        //setForecasts(data);
+        setForecasts(data.value);
         //console.log("TestThing", data);
-
-        //// Get raw text from the response
-        //const text = await response.text();  // Get response as plain text (for debugging)
-        //console.log("Raw Response:", text);  // Log the raw content of the response
-
-        //// If it's JSON, you can parse it here
-        //const data2 = JSON.parse(text);  // Manually parse JSON
-        //console.log("Parsed Data:", data2);
-        //console.log("Data Value:", data2.value);  // Access the value
     }
 }
 
